@@ -2,6 +2,9 @@
 
 > A Vue.js project using Vuetify and Komodo like JPMogan's Cakeshop Ethereum package https://github.com/jpmorganchase/cakeshop
 
+# First layout - PoC
+![Komodo Cakeshop PoC](https://raw.githubusercontent.com/imylomylo/komodo-cakeshop/master/contrib/komodo-cakeshop-material-design-layout.png)
+
 ## Build Setup
 
 ``` bash
