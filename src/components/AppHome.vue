@@ -196,6 +196,9 @@
 </template>
 
 <script>
+import kmdrpc from "../../node_modules/komodo-rpc-lib/src/kmdrpc.js";
+import control, { connect, stop } from '../../node_modules/komodo-rpc-lib/src/control'
+
 export default {
   name: "AppHome",
   data: () => ({
@@ -203,7 +206,7 @@ export default {
     drawer: null,
     items: [
       { icon: "history", text: "Console" },
-      { icon: "content_copy", text: "Contracts"},
+      { icon: "content_copy", text: "Contracts" },
       { icon: "phonelink", text: "Sandbox" },
       { icon: "contacts", text: "Chain Explorer" },
       { icon: "settings", text: "Wallet" },
@@ -217,9 +220,24 @@ export default {
   },
   methods: {
     magic: function(command) {
-      console.log("HEY " + command)
-      window.location.href='#/'+command.toLowerCase().replace(/ /g,'')
+      console.log("HEY " + command);
+      window.location.href = "#/" + command.toLowerCase().replace(/ /g, "");
     }
+  },
+  created: function() {
+    // get the connection object configured and ready
+    // const rpc = control.connect("http://127.0.0.1:7771", "user", "pass");
+    const rpc = control.connect("http://127.0.0.1:3000/http://127.0.0.1:7771", "user", "pass");
+
+    // pass the configured rpc connection and fire it off
+    control
+      .getinfo(rpc)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>
