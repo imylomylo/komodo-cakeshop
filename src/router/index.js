@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import AppHome from '@/components/AppHome'
+import AppWallet from '@/components/AppWallet'
+import AppContracts from '@/components/AppContracts'
+import AppConsole from '@/components/AppConsole'
 
 Vue.use(Router)
 
@@ -14,12 +17,12 @@ export default new Router({
     {
       path: '/console',
       name: 'Console',
-      component: AppHome
+      component: AppConsole
     },
     {
       path: '/contracts',
       name: 'Contracts',
-      component: AppHome
+      component: AppContracts
     },
     {
       path: '/sandbox',
@@ -34,7 +37,7 @@ export default new Router({
     {
       path: '/wallet',
       name: 'Wallet',
-      component: AppHome
+      component: AppWallet
     },
     {
       path: '/peers',
