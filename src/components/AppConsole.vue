@@ -41,6 +41,11 @@ import stdrpc from './kmdrpc/stdrpc_es5'
 	  generating.generate(rpc,this.slider).then(resp=>{
             console.log("Incoming response")
             console.log(resp)
+	    control.getinfo(rpc).then(respgetinfo=>{
+		this.getinfo=respgetinfo
+	    }).catch(function (error){
+		console.log(error)
+	    })
         }).catch(function (error){
           console.log(error)
         })
