@@ -35,7 +35,7 @@ export default new Router({
       component: AppHome
     },
     {
-      path: '/wallet',
+      path: '/walletexplorer',
       name: 'Wallet',
       component: AppWallet
     },

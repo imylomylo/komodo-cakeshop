@@ -26,15 +26,15 @@ export function backupwallet(rpc) {
 }
 
 // dumpprivkey "komodoaddress"
-export function dumpprivkey(rpc) {
+export function dumpprivkey(rpc, address) {
     return new Promise((resolve, reject) => {
-        // rpc.dumpprivkey().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("dumpprivkey - Not supported yet")
+        rpc.dumpprivkey(address).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
+        //reject("dumpprivkey - Not supported yet")
     })
 }
 
@@ -132,13 +132,13 @@ export function getbalance64(rpc) {
 // getnewaddress ( "account" )
 export function getnewaddress(rpc) {
     return new Promise((resolve, reject) => {
-        // rpc.getnewaddress().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("getnewaddress - Not supported yet")
+        rpc.getnewaddress().then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
+        //reject("getnewaddress - Not supported yet")
     })
 }
 

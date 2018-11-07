@@ -1,9 +1,48 @@
 <template>
     <div>
-    <v-btn color="primary">Get New Address</v-btn>
-    <v-btn color="success">Success</v-btn>
-    <v-btn color="error">Error</v-btn>
-    <v-btn color="warning">Warning</v-btn>
+    <v-btn v-on:click="getnewaddress" color="primary">Get New Address</v-btn>
+    <v-btn color="success">Send</v-btn>
+    <v-btn color="warning">Receive</v-btn>
+    <v-btn v-on:click="dumpprivkey" color="error">Dump WIF</v-btn>
     <v-btn color="info">Info</v-btn>
+    <br/>
+    address: {{ address }} and WIF: {{ wif }}
   </div>
 </template>
+<script>
+import kmdrpc from './kmdrpc'
+import control from './kmdrpc/control'
+import wallet from './kmdrpc/wallet'
+import stdrpc from './kmdrpc/stdrpc_es5'
+
+    const rpc = control.connect("http://176.9.138.124:7777/http://127.0.0.1:9636","user777000","pass777000")
+  export default {
+    data () {
+      return {
+        slider: 1,
+        address: "will get overwritten",
+	wif: "dump"
+      }
+    },
+    methods: {
+        getnewaddress: function(event) {
+          wallet.getnewaddress(rpc).then(resp=>{
+            console.log("Incoming response")
+            console.log(resp)
+	    this.address = resp
+        }).catch(function (error){
+          console.log(error)
+        })
+        },
+        dumpprivkey: function(event) {
+          wallet.dumpprivkey(rpc, this.address).then(resp=>{
+            console.log("Incoming response")
+            console.log(resp)
+	    this.wif = resp
+        }).catch(function (error){
+          console.log(error)
+        })
+        }
+    }
+}
+</script>
