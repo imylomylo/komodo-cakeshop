@@ -32,7 +32,7 @@ import stdrpc from './kmdrpc/stdrpc_es5'
   export default {
     data () {
       return {
-	slider: 5,
+	slider: 1,
         getinfo: "will get overwritten"
       }
     },
