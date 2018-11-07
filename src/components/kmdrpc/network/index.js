@@ -106,13 +106,13 @@ export function getnetworkinfo(rpc) {
 // getpeerinfo
 export function getpeerinfo(rpc) {
     return new Promise((resolve, reject) => {
-        // rpc.getpeerinfo().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("getpeerinfo - Not supported yet")
+        rpc.getpeerinfo().then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
+        // reject("getpeerinfo - Not supported yet")
     })
 }
 

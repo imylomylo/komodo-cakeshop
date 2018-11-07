@@ -4,6 +4,7 @@ import AppHome from '@/components/AppHome'
 import AppWallet from '@/components/AppWallet'
 import AppContracts from '@/components/AppContracts'
 import AppConsole from '@/components/AppConsole'
+import AppPeers from '@/components/AppPeers'
 
 Vue.use(Router)
 
@@ -42,7 +43,7 @@ export default new Router({
     {
       path: '/peers',
       name: 'Peers',
-      component: AppHome
+      component: AppPeers
     },
     {
       path: '/api',

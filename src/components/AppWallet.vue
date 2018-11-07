@@ -20,8 +20,8 @@ import stdrpc from './kmdrpc/stdrpc_es5'
     data () {
       return {
         slider: 1,
-        address: "will get overwritten",
-	wif: "dump"
+        address: "get new address",
+	wif: "this is not the wif"
       }
     },
     methods: {
@@ -30,6 +30,7 @@ import stdrpc from './kmdrpc/stdrpc_es5'
             console.log("Incoming response")
             console.log(resp)
 	    this.address = resp
+	    this.wif = "this is not the wif"
         }).catch(function (error){
           console.log(error)
         })
