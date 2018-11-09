@@ -117,15 +117,14 @@ export function reconsiderblock(rpc) {
 }
 
 // validateaddress "komodoaddress"
-export function validateaddress(rpc) {
+export function validateaddress(rpc, address) {
     return new Promise((resolve, reject) => {
-        // rpc.validateaddress().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("validateaddress - Not supported yet")
+        rpc.validateaddress(address).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 
