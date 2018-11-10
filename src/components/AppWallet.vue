@@ -13,6 +13,7 @@
 	    >
 	      Info
 	    </v-btn>
+	    <v-btn @click="getaddressesbyaccount" color="purple-dark-2">Addresses Debug</v-btn>
 	</div>
 
 
@@ -260,6 +261,24 @@ import stdrpc from './kmdrpc/stdrpc_es5'
 	    this.address.iscompressed = resp.iscompressed
 	    this.address.account = resp.account
 	  }).catch(function (error){
+	    console.log(error)
+	  })
+	},
+	getaddressesbyaccount: function(event){
+	  console.log("list address groupings")
+	  wallet.getaddressesbyaccount(rpc, this.address.account).then(resp=>{
+	    console.log("getaddressesbyaccount")
+	    console.log(resp)
+	  }).catch(function(error){
+	    console.log(error)
+	  })
+	},
+	listaddressgroupings: function(event){
+	  console.log("list address groupings")
+	  wallet.listaddressgroupings(rpc).then(resp=>{
+	    console.log("address groupings response")
+	    console.log(resp)
+	  }).catch(function(error){
 	    console.log(error)
 	  })
 	}

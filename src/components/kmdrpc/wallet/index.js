@@ -91,15 +91,14 @@ export function getaccountaddress(rpc) {
 }
 
 // getaddressesbyaccount "account"
-export function getaddressesbyaccount(rpc) {
+export function getaddressesbyaccount(rpc, address = '') {
     return new Promise((resolve, reject) => {
-        // rpc.getaddressesbyaccount().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("getaddressesbyaccount - Not supported yet")
+        rpc.getaddressesbyaccount(address).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 
@@ -297,13 +296,12 @@ export function listaccounts(rpc) {
 // listaddressgroupings
 export function listaddressgroupings(rpc) {
     return new Promise((resolve, reject) => {
-        // rpc.listaddressgroupings().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("listaddressgroupings - Not supported yet")
+        rpc.listaddressgroupings().then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 
