@@ -5,7 +5,14 @@
 	    <v-btn color="success">Send</v-btn>
 	    <v-btn color="warning">Receive</v-btn>
  	    <v-btn v-on:click="dumpprivkey" color="error">Dump WIF</v-btn>
-	    <v-btn @click="validateaddress" color="info">Info</v-btn>
+            <v-btn
+	      :disabled="dialogtest"
+	      :loading="dialogtest"
+	      color="info"
+	      @click="dialogtest = true"
+	    >
+	      Info
+	    </v-btn>
 	</div>
 
 
@@ -15,14 +22,9 @@
     >
       <v-card>
         <v-card-title class="headline">Address Info</v-card-title>
-
         <v-card-text>
          This is your address information 
         </v-card-text>
-
-
-	    pubkey: "",
-	    account: ""
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
@@ -120,10 +122,6 @@
       </v-card>
     </v-dialog>
 
-
-
-
-
 	<div class="infofield">
 	    <v-container>
 	      <v-layout row wrap>
@@ -137,20 +135,9 @@
 	      </v-layout>
 	    </v-container>
 	</div>
-	<div class="redundant">
-	    <br/>
-	    address: {{ address.address }} and WIF: {{ address.wif }}
-	</div>
 	<div class="testarea">
-    <v-btn
-      :disabled="dialogtest"
-      :loading="dialogtest"
-      class="white--text"
-      color="purple darken-2"
-      @click="dialogtest = true"
-    >
-      Start loading
-    </v-btn>
+
+
     <v-dialog
       v-model="dialogtest"
       hide-overlay
@@ -207,20 +194,22 @@ import stdrpc from './kmdrpc/stdrpc_es5'
     watch: {
       dialogtest (val) {
         if (!val) return
-        let timeout = 3000
+        let timeout = 2777
 	if( this.address.pubkey != "" ){
 	  timeout = 777
+	  this.loadingmsg = "Please stand by"
+          setTimeout(() => (this.dialogtest = false, this.dialog=true), timeout)
 	}
 	else if( this.address.address == "empty" || this.address.address == "" ){
 	    timeout = 1777
 	    this.getnewaddress()
 	    console.log("Fetching info before an address is set")
-	    this.loadingmsg = "Getting a new address first, try again"
+	    this.loadingmsg = "Getting a new address first then try again"
 	    setTimeout(() => this.dialogtest = false, timeout)
  	}
 	else{
 	  this.validateaddress(null)
-	  this.loadingmsg = "Please stand by"
+	  this.loadingmsg = "Validating...please wait"
           setTimeout(() => (this.dialogtest = false, this.dialog=true), timeout)
 	}
       }
