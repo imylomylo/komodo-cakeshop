@@ -1,4 +1,6 @@
 <template>
+<div>
+  <AppDiceTable />
   <v-tabs
     dark
     color="cyan"
@@ -73,9 +75,14 @@
       </v-tab-item>
     </v-tabs-items>
   </v-tabs>
+</div>
 </template>
 <script>
+import AppDiceTable from './AppDiceTable.vue'
   export default {
+    components: {
+	AppDiceTable
+    },
     data () {
       return {
         contracts: [

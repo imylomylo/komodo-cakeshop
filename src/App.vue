@@ -110,8 +110,8 @@
     <v-btn
       fab
       bottom
-      right
-      color="pink"
+      left
+      color="green"
       dark
       fixed
       @click.stop="dialog = !dialog"
