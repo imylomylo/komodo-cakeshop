@@ -126,6 +126,7 @@ export default {
 		newTable.txid = resp
 		this.tables.push(newTable)
 		console.log(this.tables)
+		this.name = this.funds = this.minbet = this.maxbet = this.maxodds = this.timeout = ""
 		this.$emit('new-table', newTable)
 //		wallet.gettransaction(rpc, resp).then(resp=>{
 //		  console.log(resp)

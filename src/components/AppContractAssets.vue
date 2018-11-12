@@ -1,5 +1,6 @@
 <template>
 <div>
+  <AppDiceTable v-on:new-table="newTable" />
   <v-tabs
     dark
     color="cyan"
@@ -7,30 +8,64 @@
   >
     <v-tabs-slider color="yellow"></v-tabs-slider>
 
-    <AppContractFaucetTabHeader />
-    <AppContractDiceTabHeader />
+    <v-tab
+      v-for="i in contracts"
+      :href="'#tab-' + i.name"
+      :key="i.name"
+    >
+      CC {{ i.name }} 
+    </v-tab>
 
     <v-tabs-items>
-      <AppContractFaucet />
-      <AppContractDice />
+      <v-tab-item
+        v-for="i in contracts"
+        :id="'tab-' + i.name"
+        :key="i.name"
+      >
+
+        <v-card flat>
+          <v-card-text>{{ i.description}}</v-card-text>
+
+  <v-data-table
+    :headers="headers"
+    :items="desserts"
+    :loading="true"
+    class="elevation-1"
+  >
+    <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
+    <template slot="headerCell" slot-scope="props">
+      <v-tooltip bottom>
+        <span slot="activator">
+          {{ props.header.text }}
+        </span>
+        <span>
+          {{ props.header.text }}
+        </span>
+      </v-tooltip>
+    </template>
+    <template slot="items" slot-scope="props">
+      <td class="text-xs-right">{{ props.item.name }}</td>
+      <td class="text-xs-right">{{ props.item.minbet }}</td>
+      <td class="text-xs-right">{{ props.item.maxbet }}</td>
+      <td class="text-xs-right">{{ props.item.maxodds }}</td>
+      <td class="text-xs-right">{{ props.item.timeout}}</td>
+      <td class="text-xs-right">{{ props.item.funds}}</td>
+      <td class="text-xs-right">{{ props.item.txid}}</td>
+    </template>
+  </v-data-table>
+
+
+        </v-card>
+      </v-tab-item>
     </v-tabs-items>
   </v-tabs>
 </div>
 </template>
 <script>
 import AppDiceTable from './AppDiceTable.vue'
-import AppContractFaucetTabHeader from './AppContractFaucetTabHeader.vue'
-import AppContractDiceTabHeader from './AppContractDiceTabHeader.vue'
-import AppContractFaucet from './AppContractFaucet.vue'
-import AppContractDice from './AppContractDice.vue'
-
   export default {
     components: {
-	AppDiceTable,
-	AppContractFaucetTabHeader,
-	AppContractDiceTabHeader,
-	AppContractFaucet,
-	AppContractDice
+	AppDiceTable
     },
     data () {
       return {
@@ -53,6 +88,8 @@ import AppContractDice from './AppContractDice.vue'
           }
         ],
         getinfo: "yo",
+
+
         headers: [
           { text: 'Table', sortable: false, align: 'left', value: 'name' },
           { text: 'min bet', value: 'minbet' },
@@ -181,6 +218,10 @@ import AppContractDice from './AppContractDice.vue'
             txid: '1%'
           }
         ]
+
+
+
+
       }
     },
     created() {
@@ -190,7 +231,7 @@ import AppContractDice from './AppContractDice.vue'
       newTable: function(newTable) {
 	console.log("New table received")
 	console.log(newTable)
-	this.tables.push(newTable)
+	this.desserts.push(newTable)
       }
     }
   }
