@@ -27,9 +27,9 @@
          <td class="text-xs-right">{{ props.item.minbet }}</td>
          <td class="text-xs-right">{{ props.item.maxbet }}</td>
          <td class="text-xs-right">{{ props.item.maxodds }}</td>
-         <td class="text-xs-right">{{ props.item.timeout}}</td>
-         <td class="text-xs-right">{{ props.item.funds}}</td>
-         <td class="text-xs-right">{{ props.item.txid}}</td>
+         <td class="text-xs-right">{{ props.item.timeoutblocks}}</td>
+         <td class="text-xs-right">{{ props.item.funding}}</td>
+         <td class="text-xs-right">{{ props.item.fundingtxid}}</td>
        </template>
        </v-data-table>
      <AppDiceTable v-on:new-table="newTable"/>
@@ -38,6 +38,11 @@
 </template>
 <script>
 import AppDiceTable from './AppDiceTable.vue'
+import control from './kmdrpc/control'
+import diceCC from './kmdrpc/dice'
+
+const rpc = control.connect("http://176.9.138.124:7777/http://127.0.0.1:14441","user2938311325","pass62443382fef529aa1a580f39d9f11578db5f84525acf261a54eb7245cf4b72e5e1")
+
   export default {
     components: {
 	AppDiceTable
@@ -51,13 +56,26 @@ import AppDiceTable from './AppDiceTable.vue'
           { text: 'min bet', value: 'minbet' },
           { text: 'max bet', value: 'maxbet' },
           { text: 'max odds', value: 'maxodds' },
-          { text: 'timeout', value: 'timeout' },
-          { text: 'funds', value: 'funds' },
+          { text: 'timeoutblocks', value: 'timeoutblocks' },
+          { text: 'funding', value: 'funding' },
           { text: 'txid', value: 'txid' }
         ]
       }
     },
     created() {
+      diceCC.dicelist(rpc).then(resp=>{
+	console.log(resp)
+	for(let i = 0 ; i < resp.length ; i++){
+	  diceCC.diceinfo(rpc,resp[i]).then(resp=>{
+	    console.log(resp)
+	    this.tables.push(resp)
+	  }).catch(function(error){
+	    console.log(error)
+	  })
+	}
+      }).catch(function(error){
+	console.log(error)
+      })
     },
     methods: {
       newTable: function(newTable) {

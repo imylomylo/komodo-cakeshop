@@ -69,15 +69,14 @@ export function dicefund(rpc, name, funds, minbet, maxbet, maxodds, timeout) {
 
 
 // diceinfo fundingtxid
-export function diceinfo(rpc) {
+export function diceinfo(rpc, txid) {
     return new Promise((resolve, reject) => {
-        // rpc.diceinfo().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("diceinfo - Not supported yet")
+        rpc.diceinfo(txid).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 
@@ -85,13 +84,12 @@ export function diceinfo(rpc) {
 // dicelist
 export function dicelist(rpc) {
     return new Promise((resolve, reject) => {
-        // rpc.dicelist().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("dicelist - Not supported yet")
+        rpc.dicelist().then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 

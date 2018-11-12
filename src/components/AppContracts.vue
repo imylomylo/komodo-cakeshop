@@ -7,8 +7,8 @@
   >
     <v-tabs-slider color="yellow"></v-tabs-slider>
 
-    <AppContractFaucetTabHeader />
     <AppContractDiceTabHeader />
+    <AppContractFaucetTabHeader />
 
     <v-tabs-items>
       <AppContractFaucet />

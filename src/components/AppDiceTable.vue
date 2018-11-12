@@ -49,7 +49,7 @@
             </v-flex>
             <v-flex xs12>
               <v-text-field
-		v-model="funds"
+		v-model="funding"
                 prepend-icon="mail"
                 placeholder="Funds"
               ></v-text-field>
@@ -63,7 +63,7 @@
             </v-flex>
             <v-flex xs12>
               <v-text-field
-		v-model="timeout"
+		v-model="timeoutblocks"
                 prepend-icon="notes"
                 placeholder="Timeout"
               ></v-text-field>
@@ -94,11 +94,11 @@ export default {
   data: () => ({
     dialog: false,
      name: "",
-     funds: "",
+     funding: "",
      minbet: "",
      maxbet: "",
      maxodds: "",
-     timeout: "",
+     timeoutblocks: "",
      txid: "",
      tables: []
   }),
@@ -113,12 +113,12 @@ export default {
     dicefund: function(event) {
 	  let newTable = {}
 	  newTable.name = this.name
-	  newTable.funds = this.funds
+	  newTable.funding = this.funding
 	  newTable.minbet = this.minbet
 	  newTable.maxbet = this.maxbet
 	  newTable.maxodds = this.maxodds
-	  newTable.timeout = this.timeout
-          diceCC.dicefund(rpc, this.name, this.funds, this.minbet, this.maxbet, this.maxodds, this.timeout).then(resp=>{                                                                                           
+	  newTable.timeoutblocks = this.timeoutblocks
+          diceCC.dicefund(rpc, this.name, this.funding, this.minbet, this.maxbet, this.maxodds, this.timeoutblocks).then(resp=>{                                                                                           
             console.log("dicefund")                                         
             console.log(resp)                                                  
 	    rawTX.sendrawtransaction(rpc, resp.hex).then(resp=>{
@@ -126,7 +126,7 @@ export default {
 		newTable.txid = resp
 		this.tables.push(newTable)
 		console.log(this.tables)
-		this.name = this.funds = this.minbet = this.maxbet = this.maxodds = this.timeout = ""
+		this.name = this.funding = this.minbet = this.maxbet = this.maxodds = this.timeoutblocks = ""
 		this.$emit('new-table', newTable)
 //		wallet.gettransaction(rpc, resp).then(resp=>{
 //		  console.log(resp)

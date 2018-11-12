@@ -5,6 +5,7 @@ import AppWallet from '@/components/AppWallet'
 import AppContracts from '@/components/AppContracts'
 import AppConsole from '@/components/AppConsole'
 import AppPeers from '@/components/AppPeers'
+import AppTx from '@/components/AppTx'
 
 Vue.use(Router)
 
@@ -26,9 +27,9 @@ export default new Router({
       component: AppContracts
     },
     {
-      path: '/sandbox',
-      name: 'Sandbox',
-      component: AppHome
+      path: '/txexplorer',
+      name: 'Tx',
+      component: AppTx
     },
     {
       path: '/chainexplorer',
