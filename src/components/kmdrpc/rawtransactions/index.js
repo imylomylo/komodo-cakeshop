@@ -65,15 +65,14 @@ export function getrawtransaction(rpc) {
 }
 
 // sendrawtransaction "hexstring" ( allowhighfees )
-export function sendrawtransaction(rpc) {
+export function sendrawtransaction(rpc, hex) {
     return new Promise((resolve, reject) => {
-        // rpc.sendrawtransaction().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("sendrawtransaction - Not supported yet")
+        rpc.sendrawtransaction(hex).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 

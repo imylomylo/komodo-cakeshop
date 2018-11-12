@@ -29,6 +29,7 @@
                   >
                 </v-avatar>
                 <v-text-field
+		  v-model="name"
                   placeholder="Table name"
                 ></v-text-field>
               </v-layout>
@@ -36,29 +37,33 @@
             <v-flex xs6>
               <v-text-field
                 prepend-icon="business"
+		v-model="minbet"
                 placeholder="Min Bet"
               ></v-text-field>
             </v-flex>
             <v-flex xs6>
               <v-text-field
+		v-model="maxbet"
                 placeholder="Max Bet"
               ></v-text-field>
             </v-flex>
             <v-flex xs12>
               <v-text-field
+		v-model="funds"
                 prepend-icon="mail"
                 placeholder="Funds"
               ></v-text-field>
             </v-flex>
             <v-flex xs12>
               <v-text-field
-                type="tel"
+		v-model="maxodds"
                 prepend-icon="phone"
                 placeholder="Max Odds"
               ></v-text-field>
             </v-flex>
             <v-flex xs12>
               <v-text-field
+		v-model="timeout"
                 prepend-icon="notes"
                 placeholder="Timeout"
               ></v-text-field>
@@ -69,7 +74,7 @@
           <!-- <v-btn flat color="primary">More</v-btn> -->
           <v-spacer></v-spacer>
           <v-btn flat color="primary" @click="dialog = false">Cancel</v-btn>
-          <v-btn flat @click="dialog = false">Send</v-btn>
+          <v-btn flat @click="dicefund">Send</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -77,10 +82,25 @@
 </template>
 
 <script>
+import control from './kmdrpc/control'
+import diceCC from './kmdrpc/dice'
+import rawTX from './kmdrpc/rawtransactions'
+import wallet from './kmdrpc/wallet'
+
+    const rpc = control.connect("http://176.9.138.124:7777/http://127.0.0.1:14441","user2938311325","pass62443382fef529aa1a580f39d9f11578db5f84525acf261a54eb7245cf4b72e5e1")  
+
 export default {
   name: "AppDiceTable",
   data: () => ({
-    dialog: false
+    dialog: false,
+     name: "",
+     funds: "",
+     minbet: "",
+     maxbet: "",
+     maxodds: "",
+     timeout: "",
+     txid: "",
+     tables: []
   }),
   props: {
     source: ""
@@ -89,6 +109,35 @@ export default {
     magic: function(command) {
       console.log("HEY " + command)
       window.location.href='#/'+command.toLowerCase().replace(/ /g,'')
+    },
+    dicefund: function(event) {
+	  let newTable = {}
+	  newTable.name = this.name
+	  newTable.funds = this.funds
+	  newTable.minbet = this.minbet
+	  newTable.maxbet = this.maxbet
+	  newTable.maxodds = this.maxodds
+	  newTable.timeout = this.timeout
+          diceCC.dicefund(rpc, this.name, this.funds, this.minbet, this.maxbet, this.maxodds, this.timeout).then(resp=>{                                                                                           
+            console.log("dicefund")                                         
+            console.log(resp)                                                  
+	    rawTX.sendrawtransaction(rpc, resp.hex).then(resp=>{
+		console.log(resp)
+		newTable.txid = resp
+		this.tables.push(newTable)
+		console.log(this.tables)
+		this.$emit('new-table', newTable)
+//		wallet.gettransaction(rpc, resp).then(resp=>{
+//		  console.log(resp)
+//		}).catch(function(error){
+//		  console.log(error)
+//		})
+            }).catch(function(error){
+		console.log(error)
+	    })
+	    this.dialog = false
+          }).catch(function(error){                                                                                            
+            console.log(error)                                                                                       }) 
     }
   }
 };

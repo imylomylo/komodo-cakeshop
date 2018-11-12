@@ -56,15 +56,14 @@ export function dicefinish(rpc) {
 
 
 // dicefund name funds minbet maxbet maxodds timeoutblocks
-export function dicefund(rpc) {
+export function dicefund(rpc, name, funds, minbet, maxbet, maxodds, timeout) {
     return new Promise((resolve, reject) => {
-        // rpc.dicefund().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("dicefund - Not supported yet")
+        rpc.dicefund(name, funds, minbet, maxbet, maxodds, timeout).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 

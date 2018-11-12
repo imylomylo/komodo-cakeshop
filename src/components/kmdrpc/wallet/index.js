@@ -181,15 +181,14 @@ export function getreceivedbyaddress(rpc) {
 }
 
 // gettransaction "txid" ( includeWatchonly )
-export function gettransaction(rpc) {
+export function gettransaction(rpc, txid) {
     return new Promise((resolve, reject) => {
-        // rpc.gettransaction().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
-        reject("gettransaction - Not supported yet")
+        rpc.gettransaction(txid).then(resp => {
+            resolve(resp)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
     })
 }
 
