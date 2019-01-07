@@ -8,6 +8,7 @@
     <v-tabs-slider color="yellow"></v-tabs-slider>
 
     <AppContractDiceTabHeader />
+    <AppContractOraclesTabHeader />
     <AppContractFaucetTabHeader />
 
     <v-tabs-items>
@@ -19,18 +20,24 @@
 </template>
 <script>
 import AppDiceTable from './AppDiceTable.vue'
+import AppOraclesTable from './AppOraclesTable.vue'
 import AppContractFaucetTabHeader from './AppContractFaucetTabHeader.vue'
 import AppContractDiceTabHeader from './AppContractDiceTabHeader.vue'
+import AppContractOraclesTabHeader from './AppContractOraclesTabHeader.vue'
 import AppContractFaucet from './AppContractFaucet.vue'
 import AppContractDice from './AppContractDice.vue'
+import AppContractOracles from './AppContractOracles.vue'
 
   export default {
     components: {
 	AppDiceTable,
+	AppOraclesTable,
 	AppContractFaucetTabHeader,
 	AppContractDiceTabHeader,
+	AppContractOraclesTabHeader,
 	AppContractFaucet,
-	AppContractDice
+	AppContractDice,
+	AppContractOracles
     },
     data () {
       return {
