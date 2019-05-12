@@ -12,8 +12,8 @@
     <AppContractFaucetTabHeader />
 
     <v-tabs-items>
-      <AppContractFaucet />
       <AppContractDice />
+      <AppContractFaucet />
     </v-tabs-items>
   </v-tabs>
 </div>

@@ -3,7 +3,7 @@
       :href="'#tab-' + name"
       :key="name"
     >
-      CC faucetc
+      CC {{ name }}
     </v-tab>
 </template>
 <script>
@@ -12,7 +12,7 @@
     },
     data () {
       return {
-	name: "FaucetC"
+	name: "FaucetCC"
       }
     },
     created() {

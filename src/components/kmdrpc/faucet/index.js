@@ -3,7 +3,7 @@
 export function faucetaddress(rpc, pubkey) {
     return new Promise((resolve, reject) => {
         rpc.faucetaddress(pubkey).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -45,7 +45,7 @@ export function faucetget(rpc) {
 export function faucetinfo(rpc) {
     return new Promise((resolve, reject) => {
         rpc.faucetinfo().then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
