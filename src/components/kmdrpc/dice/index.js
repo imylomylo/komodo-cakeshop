@@ -16,12 +16,12 @@ export function diceaddfunds(rpc) {
 // diceaddress [pubkey]
 export function diceaddress(rpc) {
     return new Promise((resolve, reject) => {
-        // rpc.diceaddress().then(resp => {
-        //     resolve(resp)
-        // }).catch(error => {
-        //     console.log(error)
-        //     reject(error)
-        // })
+        rpc.diceaddress().then(resp => {
+            resolve(resp.result)
+        }).catch(error => {
+            console.log(error)
+            reject(error)
+        })
         reject("diceaddress - Not supported yet")
     })
 }
