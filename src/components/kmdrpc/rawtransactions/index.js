@@ -68,7 +68,7 @@ export function getrawtransaction(rpc) {
 export function sendrawtransaction(rpc, hex) {
     return new Promise((resolve, reject) => {
         rpc.sendrawtransaction(hex).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)

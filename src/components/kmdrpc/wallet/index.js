@@ -29,7 +29,7 @@ export function backupwallet(rpc) {
 export function dumpprivkey(rpc, address) {
     return new Promise((resolve, reject) => {
         rpc.dumpprivkey(address).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -94,7 +94,7 @@ export function getaccountaddress(rpc) {
 export function getaddressesbyaccount(rpc, address = '') {
     return new Promise((resolve, reject) => {
         rpc.getaddressesbyaccount(address).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -132,7 +132,7 @@ export function getbalance64(rpc) {
 export function getnewaddress(rpc) {
     return new Promise((resolve, reject) => {
         rpc.getnewaddress().then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -184,7 +184,7 @@ export function getreceivedbyaddress(rpc) {
 export function gettransaction(rpc, txid) {
     return new Promise((resolve, reject) => {
         rpc.gettransaction(txid).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -219,7 +219,7 @@ export function getunconfirmedbalance(rpc) {
 export function getwalletinfo(rpc) {
     return new Promise((resolve, reject) => {
         rpc.getwalletinfo().then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -296,7 +296,7 @@ export function listaccounts(rpc) {
 export function listaddressgroupings(rpc) {
     return new Promise((resolve, reject) => {
         rpc.listaddressgroupings().then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)

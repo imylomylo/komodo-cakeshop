@@ -1,5 +1,5 @@
 import stdrpc from '../stdrpc_es5'
-
+import fetchrpc from '../fetchrpc'
 /**
  * @api {post} / connect
  * @apiName connect
@@ -15,8 +15,9 @@ import stdrpc from '../stdrpc_es5'
  */
 export function connect(url, username, password) {
     console.log("Connecting to " + url)
-    const rpc = stdrpc({
-        url: url,
+    // const rpc = stdrpc({
+    const rpc = fetchrpc({
+            url: url,
         username: username,
         password: password
     })
@@ -37,8 +38,9 @@ export function connect(url, username, password) {
  */
 export function configure(url, username, password) {
     console.log("Connecting to " + url)
-    const rpc = stdrpc({
-        url: url,
+    // const rpc = stdrpc({
+    const rpc = fetchrpc({
+            url: url,
         username: username,
         password: password
     })
@@ -59,6 +61,7 @@ export function configure(url, username, password) {
 export function getinfo(rpc) {
     return new Promise((resolve, reject) => {
         rpc.getinfo().then(resp => {
+            console.log("RESPONSE RECEIVED")
             resolve(resp)
         }).catch(error => {
             console.log(error)

@@ -120,7 +120,7 @@ export function reconsiderblock(rpc) {
 export function validateaddress(rpc, address) {
     return new Promise((resolve, reject) => {
         rpc.validateaddress(address).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)

@@ -87,7 +87,7 @@ import diceCC from './kmdrpc/dice'
 import rawTX from './kmdrpc/rawtransactions'
 import wallet from './kmdrpc/wallet'
 
-    const rpc = control.connect("http://176.9.138.124:7777/http://127.0.0.1:14441","user2938311325","pass62443382fef529aa1a580f39d9f11578db5f84525acf261a54eb7245cf4b72e5e1")  
+    const rpc = control.connect("http://127.0.0.1:7777/http://127.0.0.1:12277","user1717755851","pass738d683196a4b4c3aaae118e85e3fe9cf4b40747933a32cef58cb9b35727a9f490")
 
 export default {
   name: "AppDiceTable",

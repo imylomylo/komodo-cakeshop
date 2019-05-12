@@ -59,7 +59,7 @@ export function dicefinish(rpc) {
 export function dicefund(rpc, name, funds, minbet, maxbet, maxodds, timeout) {
     return new Promise((resolve, reject) => {
         rpc.dicefund(name, funds, minbet, maxbet, maxodds, timeout).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -72,7 +72,7 @@ export function dicefund(rpc, name, funds, minbet, maxbet, maxodds, timeout) {
 export function diceinfo(rpc, txid) {
     return new Promise((resolve, reject) => {
         rpc.diceinfo(txid).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -85,7 +85,8 @@ export function diceinfo(rpc, txid) {
 export function dicelist(rpc) {
     return new Promise((resolve, reject) => {
         rpc.dicelist().then(resp => {
-            resolve(resp)
+            console.log(resp.result)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)

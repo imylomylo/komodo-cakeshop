@@ -107,7 +107,7 @@ export function getnetworkinfo(rpc) {
 export function getpeerinfo(rpc) {
     return new Promise((resolve, reject) => {
         rpc.getpeerinfo().then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
