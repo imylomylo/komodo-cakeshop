@@ -12,9 +12,9 @@
     },
     data () {
       return {
-	name: "FaucetCC"
       }
     },
+    props: ['name'],
     created() {
     },
     methods: {

@@ -45,7 +45,7 @@ export function oraclesdata(rpc) {
 export function oraclesinfo(rpc, txid) {
     return new Promise((resolve, reject) => {
         rpc.oraclesinfo(txid).then(resp => {
-            resolve(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -55,10 +55,11 @@ export function oraclesinfo(rpc, txid) {
 
 
 // oraclelist
-export function oraclelist(rpc) {
+export function oracleslist(rpc) {
     return new Promise((resolve, reject) => {
-        rpc.oraclelist().then(resp => {
-            resolve(resp)
+        rpc.oracleslist().then(resp => {
+            console.log(resp)
+            resolve(resp.result)
         }).catch(error => {
             console.log(error)
             reject(error)
@@ -112,7 +113,7 @@ export default {
   oraclescreate,
   oraclesdata,
   oraclesinfo,
-  oraclelist,
+  oracleslist,
   oraclesregister,
   oraclessamples,
   oraclessubscribe

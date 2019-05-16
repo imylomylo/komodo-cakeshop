@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AppHome from '@/components/AppHome'
-import AppWallet from '@/components/AppWallet'
-import AppContracts from '@/components/AppContracts'
-import AppConsole from '@/components/AppConsole'
-import AppPeers from '@/components/AppPeers'
-import AppTx from '@/components/AppTx'
+import AppHome from '@/app/shared/components/AppHome'
+import AppWallet from '@/app/wallet/components/AppWallet'
+import AppContracts from '@/app/shared/components/AppContracts'
+import AppConsole from '@/app/console/components/AppConsole'
+import AppPeers from '@/app/peers/components/AppPeers'
+import AppTx from '@/app/transactions/components/AppTx'
 
 Vue.use(Router)
 

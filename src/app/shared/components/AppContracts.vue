@@ -7,34 +7,31 @@
   >
     <v-tabs-slider color="yellow"></v-tabs-slider>
 
-    <AppContractDiceTabHeader />
-    <AppContractOraclesTabHeader />
-    <AppContractFaucetTabHeader />
+    <AppTabHeader name="diceCC" />
+    <AppTabHeader name="oraclesCC" />
+    <AppTabHeader name="faucetCC" />
 
     <v-tabs-items>
       <AppContractDice />
+      <AppContractOracles />
       <AppContractFaucet />
     </v-tabs-items>
   </v-tabs>
 </div>
 </template>
 <script>
-import AppDiceTable from './AppDiceTable.vue'
-import AppOraclesTable from './AppOraclesTable.vue'
-import AppContractFaucetTabHeader from './AppContractFaucetTabHeader.vue'
-import AppContractDiceTabHeader from './AppContractDiceTabHeader.vue'
-import AppContractOraclesTabHeader from './AppContractOraclesTabHeader.vue'
-import AppContractFaucet from './AppContractFaucet.vue'
-import AppContractDice from './AppContractDice.vue'
-import AppContractOracles from './AppContractOracles.vue'
+import AppTabHeader from './AppTabHeader'
+import AppDiceTable from '@/app/dice/components/AppDiceTable.vue'
+import AppOraclesTable from '@/app/oracles/components/AppOraclesTable.vue'
+import AppContractFaucet from '@/app/faucet/components/AppContractFaucet.vue'
+import AppContractDice from '@/app/dice/components/AppContractDice.vue'
+import AppContractOracles from '@/app/oracles/components/AppContractOracles.vue'
 
   export default {
     components: {
+      AppTabHeader,
 	AppDiceTable,
 	AppOraclesTable,
-	AppContractFaucetTabHeader,
-	AppContractDiceTabHeader,
-	AppContractOraclesTabHeader,
 	AppContractFaucet,
 	AppContractDice,
 	AppContractOracles

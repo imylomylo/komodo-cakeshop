@@ -55,7 +55,7 @@ module.exports = function fetchrpc(_config) {
 					console.log("Sending")
                     return fetch(config.url, requestData).then(res => {
                         if( !res.ok ){
-							console.log("what?")
+							console.log("fetchrpc what?")
                             throw Error(res.statusText)
 						}
 						// console.log(res)

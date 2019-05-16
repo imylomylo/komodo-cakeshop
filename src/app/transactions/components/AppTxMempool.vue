@@ -1,10 +1,10 @@
 <template>
       <v-tab-item
-        :id="'tab-' + name"
-        :key="name"
+        :id="'tab-' + height"
+        :key="height"
       >
       <v-card flat>
-        <v-card-text>{{ name }}</v-card-text>
+        <v-card-text>{{ height }}</v-card-text>
         <v-data-table
           :headers="headers"
           :items="txlist"
@@ -30,8 +30,8 @@
    </v-tab-item>
 </template>
 <script>
-import control from './kmdrpc/control'
-import blockchain from './kmdrpc/blockchain'
+import control from '@/app/shared/components/kmdrpc/control'
+import blockchain from '@/app/shared/components/kmdrpc/blockchain'
 
     const rpc = control.connect("http://127.0.0.1:7777/http://127.0.0.1:12277","user1717755851","pass738d683196a4b4c3aaae118e85e3fe9cf4b40747933a32cef58cb9b35727a9f490")
 
@@ -40,7 +40,7 @@ import blockchain from './kmdrpc/blockchain'
     },
     data () {
       return {
-        name: "mempool",
+        height: "mempool",
 	txlist: [],
         headers: [
           { text: 'txid', value: 'mempooltxid' }

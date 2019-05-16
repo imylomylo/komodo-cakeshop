@@ -34,12 +34,12 @@
 </div>
 </template>
 <script>
-import kmdrpc from './kmdrpc'
-import control from './kmdrpc/control'
-import network from './kmdrpc/network'
-import stdrpc from './kmdrpc/stdrpc_es5'
+import kmdrpc from '@/app/shared/components/kmdrpc'
+import control from '@/app/shared/components/kmdrpc/control'
+import network from '@/app/shared/components/kmdrpc/network'
+// import stdrpc from '@/app/shared/components/kmdrpc/stdrpc_es5'
 
-    const rpc = control.connect("http://127.0.0.1:7777/http://127.0.0.1:12277","user1717755851","pass738d683196a4b4c3aaae118e85e3fe9cf4b40747933a32cef58cb9b35727a9f490")
+    const rpc = control.connect("http://127.0.0.1:7777/http://127.0.0.1:12277","user1984893534","pass2c68465da8ed56a9594091d6dcf6f90e5882b8d6b69953c63699bc38025988e944")
 
     //const rpc = control.connect("http://176.9.138.124:7777/http://127.0.0.1:7771","user77770000","pass77770000")
   export default {
